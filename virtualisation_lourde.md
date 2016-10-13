@@ -1,1 +1,0 @@
-Virtualisation lourde
