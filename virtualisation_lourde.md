@@ -23,7 +23,7 @@ Ces machines peuvent être virtualisé à différents niveau:
 
 * virtualisation d'un ordinateur complet avec tout son matériel (processeur, RAM, espace de stockage, etc...).  Cette solution est la plus compatible si l'on souhaite utiliser un système d'exploitation qui n'a pas été prévu spécifiquement pour cette utilisation car faisant abstraction du matériel physique de la machine hôte.  Cependant, elle est aussi la plus lente et gourmande en terme de ressources de par l'imitation d'un matériel quasi-complet via un hyperviseur de type 2, d'où sa dénomination de virtualisation "lourde".
 
-![https://fr.wikipedia.org/wiki/Virtualisation#Hyperviseur_de_type_2](https://drive.google.com/file/d/0B3GAmcqXX76gTzgtZEs3SnFvdzA/view "Schéma de la virtualisation lourde")
+![https://fr.wikipedia.org/wiki/Virtualisation#Hyperviseur_de_type_2](https://fr.wikipedia.org/wiki/Virtualisation#/media/File:Diagramme_ArchiEmulateur.png "Schéma de la virtualisation lourde")
 
 * virtualisation d'un système d'exploitation prévu à cet effet qui utilise directement les ressources matérielles offertes par la machine hôte à l'aide d'un hyperviseur de type 1.
 Cette solution est la plus performante car les systèmes d'exploitation sont optimisé pour cette utilisation,  mais en contrapartie aussi la plus contraignants et onéreuse, particulièrement si l'on utilise des logicielle propriétaire payant.
