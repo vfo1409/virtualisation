@@ -23,25 +23,25 @@ Ces machines peuvent être virtualisé à différents niveau:
 
 * virtualisation d'un ordinateur complet avec tout son matériel (processeur, RAM, espace de stockage, etc...).  Cette solution est la plus compatible si l'on souhaite utiliser un système d'exploitation qui n'a pas été prévu spécifiquement pour cette utilisation car faisant abstraction du matériel physique de la machine hôte.  Cependant, elle est aussi la plus lente et gourmande en terme de ressources de par l'imitation d'un matériel quasi-complet via un hyperviseur de type 2, d'où sa dénomination de virtualisation "lourde".
 
-![https://fr.wikipedia.org/wiki/Virtualisation#Hyperviseur_de_type_2](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Diagramme_ArchiEmulateur.png/220px-Diagramme_ArchiEmulateur.png "Schéma de la virtualisation lourde. Par Primalmotion — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=4587919")
+![https://fr.wikipedia.org/wiki/Virtualisation#Hyperviseur_de_type_2](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Diagramme_ArchiEmulateur.png "Schéma de la virtualisation lourde. Par Primalmotion — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=4587919")
 
 * virtualisation d'un système d'exploitation prévu à cet effet qui utilise directement les ressources matérielles offertes par la machine hôte à l'aide d'un hyperviseur de type 1.
 Cette solution est la plus performante car les systèmes d'exploitation sont optimisé pour cette utilisation,  mais en contrapartie aussi la plus contraignants et onéreuse, particulièrement si l'on utilise des logicielle propriétaire payant.
 On désigne cette virtualisation de para-virtualisation.
 
-![https://fr.wikipedia.org/wiki/Virtualisation#Hyperviseur_de_type_1](https://drive.google.com/open?id=0B3GAmcqXX76gY0xWMGloNHpPS2c "Schéma de la para-virtualisation. Par Primalmotion — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=4587933")
+![https://fr.wikipedia.org/wiki/Virtualisation#Hyperviseur_de_type_1](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Diagramme_ArchiHyperviseur.png "Schéma de la para-virtualisation. Par Primalmotion — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=4587933")
 
 * virtualisation d'un environnement système (un noyeau) directement dans l'espace de l'utilisateur comme n'importe quel autre logiciel.
 Ce nouvel environnement dispose ensuite de son propre espace utilisateur et gère ses applications comme s'il était le noyau légitime de la machine.
 Cette solution est la moins performante de par la présence de deux noyau sur la même machine, le manque d'isolation entre eux et par conséquent la dépendance du noyau émulé par rapport au noyau hôte.
 
-![https://fr.wikipedia.org/wiki/Virtualisation#Noyau_en_espace_utilisateur](https://drive.google.com/open?id=0B3GAmcqXX76gM19WMGR1bDk1aTg "Schéma de la virtualisation noyeau en espace utilisateur. Par Primalmotion — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=4587946")
+![https://fr.wikipedia.org/wiki/Virtualisation#Noyau_en_espace_utilisateur](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Diagramme_ArchiKernelUserSpace.png "Schéma de la virtualisation noyeau en espace utilisateur. Par Primalmotion — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=4587946")
 
 * virtualisation d'un ensemble d'application via un isolateur.
 Bien que l'on ne parle pas de virtualisation d'un système dans ce dernier cas, cette solution propre à Linux permet de faire fonctionner un lots d'applications, voir même plusieurs instance de la même application, sans avoir à se préoccuper du matériel de la machine hôte.
 Celà est très performant mais l'isolation n'étant pas complète, cette solution est totalement dépendante du noyau hôte.
 
-![https://fr.wikipedia.org/wiki/Virtualisation#Isolateur](https://drive.google.com/open?id=0B3GAmcqXX76gNWx6ZG1QQWlSR3M "Schéma de la virtualisation par isolateur. Par Primalmotion — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=4587937")
+![https://fr.wikipedia.org/wiki/Virtualisation#Isolateur](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Diagramme_ArchiIsolateur.png "Schéma de la virtualisation par isolateur. Par Primalmotion — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=4587937")
 
 Ainsi dans le cadre de la virtualisation lourde, une machine vituelle est un ordinateur quasi-complet disposant d'un processeur, d'une RAM, un ou plusieurs disques durs, une ou plusieurs interface réseau et plus ou moins de périphériques externes (lecteur disquette, CD-ROM, contrôleur USB, etc...).
 Cette ordinateur est géré par un hyperviseur de type 2 qui se charge de faire le lien entre la machine virtuelle et la machine hôte.  Lors de la création de la machine virtuelle, l'utilisateur se retrouve tout simplement avec une machine dont le disque dur est vide. Il lui imcombe d'installer le système d'exploitation de son choix, comme s'il venait réellemment de se procurer un ordinateur non-formaté.
@@ -74,11 +74,11 @@ Au niveau des systèmes d'exploitation 32 bits, cette architecture mets à dispo
 
 Remarquant que les anneaux 1 et 2 était rarement utilisé, les principaux fabriquant de processeur, Intel et AMD, les ont simplement supprimé lors de la mise au point de l'architecture x64.
 
-![https://www.antoinebenkemoun.fr/wp-content/uploads/2009/08/rings.jpg](https://drive.google.com/open?id=0B3GAmcqXX76gQ3RueXJPNGNuUFU "Schéma des anneaux de protection sur une architecture x86 pour une para-virtualisation")
+![https://www.antoinebenkemoun.fr/wp-content/uploads/2009/08/rings.jpg](https://raw.githubusercontent.com/vfo1409/virtualisation/master/rings.jpg "Schéma des anneaux de protection sur une architecture x86 pour une para-virtualisation")
 
 Ce qui posea un problème pour les logiciels de virtualisation qui placeait justement leurs hyperviseur dans l'un de ces deux noyau par mesures de sécurité. Les éditeurs de ces logiciels trouvèrent comme solutions de placer l'hyperviseur dans l'anneau 0 et le noyeau du sytème dans le même anneau que les applications (inversement dans le cadre d'une virtualisation lourde), tout en faisant en sorte de le cloisonné au maximum pour que les applications n'y est pas directement accès.
 
-![https://www.antoinebenkemoun.fr/wp-content/uploads/2009/08/Image-1.png](https://drive.google.com/open?id=0B3GAmcqXX76gSWxMcldxQXBSYUE "Schéma des anneaux de protection sur une architecture x64 pour une para-virtualisation")
+![https://www.antoinebenkemoun.fr/wp-content/uploads/2009/08/Image-1.png](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Image-1.png "Schéma des anneaux de protection sur une architecture x64 pour une para-virtualisation")
 
 Face à l'importance de plus en plus croissantes de la virtualisation, nottament dans le domaine professionnel, Intel et AMD modifière leurs processeurs pour étentre leurs jeu d'instruction en y ajoutant des fonctionnalités de virtualisation matériellement assistée, parmis celle-ci on trouve:
 
@@ -88,7 +88,7 @@ Face à l'importance de plus en plus croissantes de la virtualisation, nottament
 
 * et ainsi de permettre au machines virtuelles de ne plus êtres totalement dépendante du noyeau du système hôte puisque l'hyperviseur dispose d'un accès directe au processeur
 
-![https://www.antoinebenkemoun.fr/wp-content/uploads/2009/08/Image-2.png](https://drive.google.com/open?id=0B3GAmcqXX76gSmVKMHdETlplOTg "Schéma des anneaux de protection sur une architecture x64 pour une para-virtualisation matériellement assistée")
+![https://www.antoinebenkemoun.fr/wp-content/uploads/2009/08/Image-2.png](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Image-2.png "Schéma des anneaux de protection sur une architecture x64 pour une para-virtualisation matériellement assistée")
 
 ## Exemple par la pratique
 
@@ -159,7 +159,7 @@ Le reste ce passe exactement de la même manière que si vous utilisiez une vrai
 L'avantage étant que si vous "cassez" le système invité, celà n'impact nullment le système hôte !
 Il vous suffira de réinstaller le système invitée sur la machine virtuelle.
 
-![Internet Explore sous Windows XP invitée via une machine virtuelle VirtualBox sous Ubuntu 16.04 LTS](https://drive.google.com/open?id=0B3GAmcqXX76gWHk3ZllnWDN4T1U "Internet Explore sous Windows XP invitée via une machine virtuelle VirtualBox sous Ubuntu 16.04 LTS")
+![Internet Explore sous Windows XP invitée via une machine virtuelle VirtualBox sous Ubuntu 16.04 LTS](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Capture_du_2016-11-05_18-30-16.png "Internet Explore sous Windows XP invitée via une machine virtuelle VirtualBox sous Ubuntu 16.04 LTS. Par Valentin Faria Oliveira - Travail personnel")
 
 ## Sources
 
