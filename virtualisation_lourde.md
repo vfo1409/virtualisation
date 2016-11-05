@@ -159,43 +159,22 @@ Le reste ce passe exactement de la même manière que si vous utilisiez une vrai
 L'avantage étant que si vous "cassez" le système invité, celà n'impact nullment le système hôte !
 Il vous suffira de réinstaller le système invitée sur la machine virtuelle.
 
-![Internet Explore sous Windows XP invitée via une machine virtuelle VirtualBox sous Ubuntu 16.04 LTS](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Capture_du_2016-11-05_18-30-16.png "Internet Explore sous Windows XP invitée via une machine virtuelle VirtualBox sous Ubuntu 16.04 LTS. Par Valentin Faria Oliveira - Travail personnel")
+![Internet Explore sous Windows XP invitée via une machine virtuelle VirtualBox sous Ubuntu 16.04 LTS](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Capture_du_2016-11-05_18-30-16.png "Internet Explore sous Windows XP invité via une machine virtuelle VirtualBox sous Ubuntu 16.04 LTS. Par Valentin Faria Oliveira - Travail personnel")
 
 ## Sources
 
-Généralités informatiques:
-[https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation](https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation)
-[https://en.wikipedia.org/wiki/Orchestration_(computing)](https://en.wikipedia.org/wiki/Orchestration_(computing))
+Généralités informatiques:  [https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation](https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation)  [https://en.wikipedia.org/wiki/Orchestration_(computing)](https://en.wikipedia.org/wiki/Orchestration_(computing))
 
-La virtualisation, ses deifférents types, et la virtualisation lourde:
-[https://fr.wikipedia.org/wiki/Virtualisation](https://fr.wikipedia.org/wiki/Virtualisation)
-[https://doc.ubuntu-fr.org/virtualisation](https://doc.ubuntu-fr.org/virtualisation)
-[http://www.culture-informatique.net/cest-quoi-la-virtualisation/](http://www.culture-informatique.net/cest-quoi-la-virtualisation/)
-[https://www.antoinebenkemoun.fr/2009/10/classification-des-types-de-virtualisation-mise-a-jour/](https://www.antoinebenkemoun.fr/2009/10/classification-des-types-de-virtualisation-mise-a-jour/)
-[https://www.antoinebenkemoun.fr/2009/07/les-differents-types-de-virtualisation-la-virtualisation-totale/](https://www.antoinebenkemoun.fr/2009/07/les-differents-types-de-virtualisation-la-virtualisation-totale/)
+La virtualisation, ses deifférents types, et la virtualisation lourde:  [https://fr.wikipedia.org/wiki/Virtualisation](https://fr.wikipedia.org/wiki/Virtualisation)  [https://doc.ubuntu-fr.org/virtualisation](https://doc.ubuntu-fr.org/virtualisation)  [http://www.culture-informatique.net/cest-quoi-la-virtualisation/](http://www.culture-informatique.net/cest-quoi-la-virtualisation/)  [https://www.antoinebenkemoun.fr/2009/10/classification-des-types-de-virtualisation-mise-a-jour/](https://www.antoinebenkemoun.fr/2009/10/classification-des-types-de-virtualisation-mise-a-jour/)  [https://www.antoinebenkemoun.fr/2009/07/les-differents-types-de-virtualisation-la-virtualisation-totale/](https://www.antoinebenkemoun.fr/2009/07/les-differents-types-de-virtualisation-la-virtualisation-totale/)
 
-Les hyperviseur:
-[https://www.antoinebenkemoun.fr/2009/10/de-la-differenciation-hyperviseur-type-1-type-2/](https://https://www.antoinebenkemoun.fr/2009/10/de-la-differenciation-hyperviseur-type-1-type-2/)
+Les hyperviseur:  [https://www.antoinebenkemoun.fr/2009/10/de-la-differenciation-hyperviseur-type-1-type-2/](https://https://www.antoinebenkemoun.fr/2009/10/de-la-differenciation-hyperviseur-type-1-type-2/)
 
-La virtualisation matériellement assitée:
-[https://www.antoinebenkemoun.fr/2009/08/les-anneaux-de-protection/](https://www.antoinebenkemoun.fr/2009/08/les-anneaux-de-protection/)
-[https://www.antoinebenkemoun.fr/2009/08/les-anneaux-de-protection-systeme-dans-le-cas-du-64-bit/](https://www.antoinebenkemoun.fr/2009/08/les-anneaux-de-protection-systeme-dans-le-cas-du-64-bit/)
-[https://www.antoinebenkemoun.fr/2009/07/la-virtualisation-materiel-assistee/](https://www.antoinebenkemoun.fr/2009/07/la-virtualisation-materiel-assistee/)
+La virtualisation matériellement assitée:  [https://www.antoinebenkemoun.fr/2009/08/les-anneaux-de-protection/](https://www.antoinebenkemoun.fr/2009/08/les-anneaux-de-protection/)  [https://www.antoinebenkemoun.fr/2009/08/les-anneaux-de-protection-systeme-dans-le-cas-du-64-bit/](https://www.antoinebenkemoun.fr/2009/08/les-anneaux-de-protection-systeme-dans-le-cas-du-64-bit/)  [https://www.antoinebenkemoun.fr/2009/07/la-virtualisation-materiel-assistee/](https://www.antoinebenkemoun.fr/2009/07/la-virtualisation-materiel-assistee/)
 
-Différence entre virtualisation et émulation:
-[http://carvounas.net/blog/2010/05/17/virtualisation-vs-emulation/](http://carvounas.net/blog/2010/05/17/virtualisation-vs-emulation/)
-[http://www.tomshardware.fr/articles/virtualisation-Intel-AMD,2-353-4.html](http://www.tomshardware.fr/articles/virtualisation-Intel-AMD,2-353-4.html)
+Différence entre virtualisation et émulation:  [http://carvounas.net/blog/2010/05/17/virtualisation-vs-emulation/](http://carvounas.net/blog/2010/05/17/virtualisation-vs-emulation/)  [http://www.tomshardware.fr/articles/virtualisation-Intel-AMD,2-353-4.html](http://www.tomshardware.fr/articles/virtualisation-Intel-AMD,2-353-4.html)
 
-La Colecovision, l'ADAM et l'Amiga:
-[http://www.grospixels.com/site/adam.php](http://www.grospixels.com/site/adam.php)
-[http://gamopat.com/article-1972191.html](http://gamopat.com/article-1972191.html)
-[https://en.wikipedia.org/wiki/Coleco_Adam](https://en.wikipedia.org/wiki/Coleco_Adam)
-[https://fr.wikipedia.org/wiki/Amiga](https://fr.wikipedia.org/wiki/Amiga)
+La Colecovision, l'ADAM et l'Amiga:  [http://www.grospixels.com/site/adam.php](http://www.grospixels.com/site/adam.php)  [http://gamopat.com/article-1972191.html](http://gamopat.com/article-1972191.html)  [https://en.wikipedia.org/wiki/Coleco_Adam](https://en.wikipedia.org/wiki/Coleco_Adam)  [https://fr.wikipedia.org/wiki/Amiga](https://fr.wikipedia.org/wiki/Amiga)
 
-L'IBM System/360, 370 et z:
-[https://fr.wikipedia.org/wiki/IBM_360_et_370](https://fr.wikipedia.org/wiki/IBM_360_et_370)
-[https://fr.wikipedia.org/wiki/ZSeries](https://fr.wikipedia.org/wiki/ZSeries)
-[https://fr.wikipedia.org/wiki/System_z](https://fr.wikipedia.org/wiki/System_z)
+L'IBM System/360, 370 et z:  [https://fr.wikipedia.org/wiki/IBM_360_et_370](https://fr.wikipedia.org/wiki/IBM_360_et_370)  [https://fr.wikipedia.org/wiki/ZSeries](https://fr.wikipedia.org/wiki/ZSeries)  [https://fr.wikipedia.org/wiki/System_z](https://fr.wikipedia.org/wiki/System_z)
 
-VirtualBox:
-[https://www.virtualbox.org/manual/](https://www.virtualbox.org/manual/ "particulièrement le chapitre 8 sur VBoxManage")
+VirtualBox:  s[https://www.virtualbox.org/manual/](https://www.virtualbox.org/manual/ "particulièrement le chapitre 8 sur VBoxManage")
