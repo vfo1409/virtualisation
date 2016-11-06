@@ -11,7 +11,7 @@ Afin de correctement comprendre l'ensemble de ce texte, voici une brève défini
 
 * **Machine virtuelles**: Une machine virtuelle n'existe que de manière logique grâce à des programmes comme un émulateur ou un hyperviseur. Son système d'exploitation sera désigné comme système invité.
 
-* **Hyperviseur**: un hyperviseur est un programme qui à la responsabilité de gérer les machines virtuelles et de réceptionner les appels systèmes d'un système d'exploitation invité, afin de les modifier pour qu'ils soient compréhensibles par le système hôte, inversement dans le cadre d'une virtualisation lourde, ou bien directement par le matériel dans le cadre de la paravirtualisation.
+* **Hyperviseur**: Dans le cadre d'une virtualisation lourde, un hyperviseur est un programme qui à la responsabilité de gérer les machines virtuelles et de réceptionner les appels systèmes d'un système d'exploitation invité, afin de les modifier pour qu'ils soient compréhensibles par le système hôte et inversement, ou bien directement par le matériel dans le cadre de la paravirtualisation.
 
 * **Orchestration**: de manière général, l'orchestration est un mécanisme logique qui alloue la puissance de calcul à chaque processus en nécessitant, de manière équilibré et en fonction des besoins et de la priorité du processus.  Dans le cadre d'une virtualisation lourde, l'hyperviseur fait office d'orchestrateur pour les différentes machines virtuelles dont il a la charge. Il fait en sorte d'équilibrer l'attribution des ressources du système hôte à chacune d'entre elles.  
 Dans le cadre de la paravirtualisation (notamment réseau), où les machines virtuelles, le(s) hyperviseur(s) et l'espace de stockage se trouvent sur des machines physique différentes, l'orchestrateur est un programme qui va faire office de lien entre ces différents éléments afin d'éviter tout conflit et de justement distribuer les ressources matérielles à ces différents services.
@@ -27,19 +27,19 @@ Ces machines peuvent être virtualisées à différents niveaux :
 ![https://fr.wikipedia.org/wiki/Virtualisation#Hyperviseur_de_type_2](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Diagramme_ArchiEmulateur.png "Schéma de la virtualisation lourde. Par Primalmotion — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=4587919")
 
 * virtualisation d'un système d'exploitation prévu à cet effet qui utilise directement les ressources matérielles offertes par la machine hôte à l'aide d'un hyperviseur de type 1.
-Cette solution est la plus performante car les systèmes d'exploitation sont optimisés ça. En contrepartie, c'est aussi la plus contraignante et onéreuse, particulièrement si l'on utilise des logiciels propriétaires payants.
+Cette solution est la plus performante car les systèmes d'exploitation sont optimisés pour ça. En contrepartie, c'est aussi la plus contraignante et onéreuse, particulièrement si l'on utilise des logiciels propriétaires payants.
 On qualifie cette solution de "paravirtualisation".
 
 ![https://fr.wikipedia.org/wiki/Virtualisation#Hyperviseur_de_type_1](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Diagramme_ArchiHyperviseur.png "Schéma de la para-virtualisation. Par Primalmotion — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=4587933")
 
 * virtualisation d'un environnement système (un noyeau) directement dans l'espace de l'utilisateur comme n'importe quel autre logiciel.
 Ce nouvel environnement dispose ensuite de son propre espace utilisateur et gère ses applications comme s'il était le noyau légitime de la machine.
-Cette solution est la moins performante de par la présence de deux noyaux sur la même machine. C'est notamment dû au manque d'isolation entre ces derniers et par conséquent à la dépendance du noyau émulé par rapport au noyau hôte.
+Cette solution est la moins performante. Les causes sont multiples : la présence de deux noyaux sur la même machine, le manque d'isolation entre ces derniers et par conséquent la dépendance du noyau émulé par rapport au noyau hôte.
 
 ![https://fr.wikipedia.org/wiki/Virtualisation#Noyau_en_espace_utilisateur](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Diagramme_ArchiKernelUserSpace.png "Schéma de la virtualisation noyeau en espace utilisateur. Par Primalmotion — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=4587946")
 
 * virtualisation d'un ensemble d'applications par un isolateur.
-Bien qu'il ne s'agisse pas de "virtualisation de système" à proprement parler, cette solution propre à Linux permet de faire fonctionner un lots d'applications, voir même plusieurs instances de la même application, sans avoir à se préoccuper du matériel de la machine hôte.
+Bien qu'il ne s'agisse pas de "virtualisation de système" à proprement parler, cette solution propre à GNU/Linux permet de faire fonctionner un lots d'applications, voir même plusieurs instances de la même application, sans avoir à se préoccuper du matériel de la machine hôte.
 Ceci est très performant, mais l'isolation n'étant pas complète, cette solution est totalement dépendante du noyau hôte.
 
 ![https://fr.wikipedia.org/wiki/Virtualisation#Isolateur](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Diagramme_ArchiIsolateur.png "Schéma de la virtualisation par isolateur. Par Primalmotion — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=4587937")
@@ -51,20 +51,36 @@ Il est à noter que le système d'exploitation de la machine virtuelle doit êtr
 En effet, si le système invité n'est pas prévu pour l'architecture du processeur de la machine hôte, il en résultera des crashs puisque le processeur recevra des instructions qui ne font pas partie de son propre jeu d'instructions et ne saura pas comment les traiter.
 La solution à ce problème s'appelle l'émulation qui elle va réinterpreté les instructions du système invité pour qu'elles soient compréhensibles par le processeur de la machine hôte.
 
+## Les hyperviseurs
+
+Comme mentionné précédemment, il existe plusieurs types de virtualisations.
+Ici nous en détaillerons deux :
+
+- L'hyperviseur type 1
+- L'hyperviseur type 2
+
+L'hyperviseur est un composant applicatif permettant de faire cohabiter plusieurs systèmes d'exploitation sur une même machine.
+
+Ce dernier ne doit pas être confondu avec l'application de virtualisation
+
+Le principe d'hypervision est aussi présent dans le domaine des SI, là encore c'est différent. On entend "hyperviseur" dans le sens
+
 ## Evolution technologique de la virtualisation
 
 ### Un peu d'histoire
 
 Le concept de virtualisation remonte au années 60 où fut mené une grande part des travaux la concernant au centre scientifique de Cambridge d'IBM avec le MIT. Ces recherches donnèrent un système expérimental qui devint une gamme de produit vendue par IBM à partir de 1964, alors désignée comme Hyperviseur, aujourd'hui appellée "mainframe" : la série System/360 puis 370.
 Le principe de cette gamme n'était autre que de couvrir tout les besoins informatiques, scientifiques et de gestion de l'époque, tout en étant compatible avec l'ensemble des autres modèles de la gamme.
-Cette virtualisation était d'ordre mécanique, c'est-à-dire que l'ensemble des machines de cette gamme utilisait la même architecture, créant le concept du compatible-PC.
+Cette virtualisation était d'ordre mécanique, c'est-à-dire que l'ensemble des machines de cette gamme utilisait la même architecture, créant sans le savoir les prémices de ce qui serait le compatible-PC.
 La génération suivante de supercalculateur, la Série Z devenue System Z en avril 2006, prolonge cette philosophie en rendant aisé le changement d'une machine à une autre au sein de la série. De plus, cette série est justement majoritairement dédiée à la paravirtualisation.
 
 Dans les années 80, sur certains micro-ordinateurs de l'époque furent expérimentées des techniques de virtualisation, de manière logicielle ou matérielle par l'ajout de composant.
-On pourra notamment citer l'exemple de l'ADAM pour la virtualisation matérielle. Il fut distribué en 1983 sous deux versions : 
+On pourra notamment citer l'exemple de l'ADAM pour la virtualisation matérielle. Deux systèmes étaient disponibles :
 
-- soit en tant que module d'extension pour la console CBS Colecovision, la transformant alors en une suite bureautique pour les standards de l'époque et comportant une imprimante à marguerite, un clavier professionnel, un lecteur de cassettes et trois programmes (un traitement de texte en ROM, un compilateur BASIC et le jeu Super Buck Rogers sur cassette)
-- soit directement sous la forme d'un micro-ordinateur, le circuit imprimé de la console étant intégré dans le corps de la machine.
+- sous forme de pack d'extension pour la console CBS Colecovision, la transformant alors en une suite bureautique pour les standards de l'époque
+- soit directement avec la console intégrée sous forme de circuit imprimé
+
+L'ADAM était composé d'une imprimante à marguerite, un clavier professionnel, un lecteur de cassettes et trois programmes (un traitement de texte en ROM, un compilateur BASIC et le jeu Super Buck Rogers sur cassette).
 
 Mais la machine ayant véritablement tiré son épingle du jeu dans ce domaine à ce moment n'est autre que l'Amiga, vendue par Commodore International de 1985 à 1994, sur laquelle il était possible de lancer en multitâche d'autres systèmes d'exploitation comme Windows, GNU/Linux ou encore Macintosh à partir d'AmigaOs, son système d'exploitation natif.
 
@@ -86,9 +102,9 @@ Cela posera un problème pour les logiciels de virtualisation qui plaçaient jus
 
 Face à l'importance de plus en plus croissante de la virtualisation, notamment dans le domaine professionnel, Intel et AMD modifièrent leurs processeurs pour étendre leur jeu d'instructions en y ajoutant des fonctionnalités de virtualisation matériellement assistée, parmi celle-ci on trouve:
 
-* l'ajout d'un anneau -1 pour y placer l'hyperviseur ou le noyau afin que celui du système soit à nouveau correctement isolé seul dans son anneau.
+* l'ajout d'un anneau -1 pour y placer l'hyperviseur ou le noyau afin qu'il soit à nouveau correctement isolé seul dans son anneau.
 
-* l'ajout pour l'hyperviseur un accès direct aux ressources matérielles afin de mieux les redistribuer en fonction des besoins de chaque machine virtuelle
+* l'ajout pour l'hyperviseur d'un accès direct aux ressources matérielles afin de mieux les redistribuer en fonction des besoins de chaque machine virtuelle
 
 * la permission aux machines virtuelles de ne plus êtres totalement dépendantes du noyau du système hôte puisque l'hyperviseur dispose d'un accès direct au processeur
 
@@ -98,17 +114,17 @@ Face à l'importance de plus en plus croissante de la virtualisation, notamment 
 
 Dans cet exemple, nous allons créer et configurer en ligne de commande une machine virtuelle (virtualisation lourde) à l'aide du logiciel VirtualBox d'Oracle via son utilitaire intégré VBoxManage. Afin de prouver que le système invité n'est pas dépendant du système hôte, nous y installerons Windows XP 32bits.
 
-La procédure d'instalation d'un programme étant propre au système d'exploitation que vous utilisez ainsi qu'à vos préférences lors de choix multiples, nous n'aborderons pas cette étape ici.
+La procédure d'installation d'un programme étant propre au système d'exploitation que vous utilisez ainsi qu'à vos préférences pour telle ou telle procédure, nous n'aborderons pas cette étape ici.
 
-Nous précisons par ailleurs que cet exemple est effectué sous Ubuntu 16.04 LTS 64bits avec la version 5.0.24_Ubuntu r108355 de VirtualBox sur une machine possédant une architecture x64, un Intel Core I5, prise en charge de la virtualisation matériellement assitée et 8Go de mémoire vive.
+Nous précisons par ailleurs que cet exemple est effectué sous Ubuntu 16.04 LTS 64bits avec la version 5.0.24_Ubuntu r108355 de VirtualBox sur une machine possédant une architecture x64 avec un Intel Core I5 prenant en charge la virtualisation matériellement assitée ainsi que 8Go de mémoire vive.
 
-Tout d'abord, il faut créer le fichier de configuration de la machine virtuelle que nous nommerons winXP et que nous enregistrerons directement via la console de VirtualBox avec `--register`:
+Tout d'abord, il faut créer le fichier de configuration de la machine virtuelle que nous nommerons winXP et que nous attacherons directement via à console de VirtualBox avec `--register`:
 
     VBoxManage createvm --name winXP --register
 
-Ce fichier se trouvera par défaut dans le dossier `VirtualBox VMs/winXP` dans votre /home.
+Ce fichier se trouvera par défaut dans le dossier `VirtualBox VMs/winXP` dans votre répertoire personnel.
 
-Vous pouvez créer ce fichier sans l'enregistrer via la console de VirtualBox mais il faudra alors taper la commande suivante pour l'enregistrer:
+Vous pouvez créer ce fichier sans l'attacher à cette console mais il faudra alors taper la commande suivante pour l'enregistrer:
 
     VBoxManage registervm '/votre/home/VirtualBox VMs/winXP/winXP.vbox'
 
@@ -119,11 +135,11 @@ Ce fichier se trouvera dans le répertoire courant au moment de l'exécution de 
 
 Configuration en ligne de commande de notre machine virtuelle
 
-Maintenant il faut définir le système d'exploitation que nous souhaitons utiliser:
+Maintenant il faut définir le type de système d'exploitation que nous souhaitons utiliser:
 
     VBoxManage modifyvm winXP --ostype WindowsXP
 
-Pour une liste de l'ensemble des systèmes d'exploitation pris en charge:
+Pour une liste de l'ensemble des types de système d'exploitation pris en charge:
 
     VBoxManage list ostypes
 
@@ -145,7 +161,7 @@ Puis y attacher un lecteur DVDROM avec l'image disque du CDROM d'installation de
 
     VBoxManage storageattach winXP --storagectl IDE --port 1 --device 0 --type dvddrive --medium "/chemin/absolu/image/disque/xppro.iso"
 
---medium peut prendre la valeur "emptydrive" si vous ne voulez pas y mettre d'image disque, "host:/chemin/lecteur/physique" pour que la machine virtuelle utilise un lecteur de la machine hôte ou encore "addition" pour installer les addons invités permettant le partage de fichiers entre le système hôte et l'invité ou encore une meilleur gestion de capture des entrées entre les deux systèmes.
+`--medium` peut prendre la valeur `emptydrive` si vous ne voulez pas y mettre d'image disque, `host:/chemin/lecteur/physique` pour que la machine virtuelle utilise un lecteur de la machine hôte ou encore `addition` pour installer les addons invités permettant le partage de fichiers entre le système hôte et l'invité ou encore une meilleur gestion de capture des entrées entre les deux systèmes.
 
 Nous allons ensuite configurer l'affichage et le son, notamment l'accélération 3D (si vous en disposez), 100 Mo de mémoire vidéo (Vram), le pilote audio et son codec:
 
@@ -160,7 +176,7 @@ La configuration physique étant terminée, nous pouvons finalement allumer la m
     VBoxManage startvm winXP
 
 Le reste se passe exactement de la même manière que si vous utilisiez une vraie machine physique: installation du système d'exploitation, des programmes puis utilisation de ceux-ci.
-L'avantage étant que si vous compromettez le système invité, cela n'impacte nullment le système hôte !
+L'avantage étant que si vous compromettez le système invité, cela n'impacte nullement le système hôte !
 Il vous suffira de réinstaller le système invitée sur la machine virtuelle.
 
 ![Internet Explorer sous Windows XP invité via une machine virtuelle VirtualBox sous Ubuntu 16.04 LTS](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Capture_du_2016-11-05_18-30-16.png "Internet Explorer sous Windows XP invité via une machine virtuelle VirtualBox sous Ubuntu 16.04 LTS. Par Valentin Faria Oliveira - Travail personnel")
@@ -178,7 +194,7 @@ La virtualisation, ses différents types, et la virtualisation lourde:
 [https://www.antoinebenkemoun.fr/2009/10/classification-des-types-de-virtualisation-mise-a-jour/](https://www.antoinebenkemoun.fr/2009/10/classification-des-types-de-virtualisation-mise-a-jour/)    
 [https://www.antoinebenkemoun.fr/2009/07/les-differents-types-de-virtualisation-la-virtualisation-totale/](https://www.antoinebenkemoun.fr/2009/07/les-differents-types-de-virtualisation-la-virtualisation-totale/)
 
-Les hyperviseurs	:  
+Les hyperviseurs:  
 [https://www.antoinebenkemoun.fr/2009/10/de-la-differenciation-hyperviseur-type-1-type-2/](https://https://www.antoinebenkemoun.fr/2009/10/de-la-differenciation-hyperviseur-type-1-type-2/)
 
 La virtualisation matériellement assitée:  
@@ -190,16 +206,16 @@ Différences entre virtualisation et émulation:
 [http://carvounas.net/blog/2010/05/17/virtualisation-vs-emulation/](http://carvounas.net/blog/2010/05/17/virtualisation-vs-emulation/)  
 [http://www.tomshardware.fr/articles/virtualisation-Intel-AMD,2-353-4.html](http://www.tomshardware.fr/articles/virtualisation-Intel-AMD,2-353-4.html)
 
+L'IBM System/360, 370 et z:  
+[https://fr.wikipedia.org/wiki/IBM_360_et_370](https://fr.wikipedia.org/wiki/IBM_360_et_370)  
+[https://fr.wikipedia.org/wiki/ZSeries](https://fr.wikipedia.org/wiki/ZSeries)  
+[https://fr.wikipedia.org/wiki/System_z](https://fr.wikipedia.org/wiki/System_z)
+
 La Colecovision, l'ADAM et l'Amiga:  
 [http://www.grospixels.com/site/adam.php](http://www.grospixels.com/site/adam.php)  
 [http://gamopat.com/article-1972191.html](http://gamopat.com/article-1972191.html)  
 [https://en.wikipedia.org/wiki/Coleco_Adam](https://en.wikipedia.org/wiki/Coleco_Adam)  
 [https://fr.wikipedia.org/wiki/Amiga](https://fr.wikipedia.org/wiki/Amiga)
-
-L'IBM System/360, 370 et z:  
-[https://fr.wikipedia.org/wiki/IBM_360_et_370](https://fr.wikipedia.org/wiki/IBM_360_et_370)  
-[https://fr.wikipedia.org/wiki/ZSeries](https://fr.wikipedia.org/wiki/ZSeries)  
-[https://fr.wikipedia.org/wiki/System_z](https://fr.wikipedia.org/wiki/System_z)
 
 VirtualBox:  
 [https://www.virtualbox.org/manual/](https://www.virtualbox.org/manual/ "particulièrement le chapitre 8 sur VBoxManage")
