@@ -77,8 +77,8 @@ Sur les processeurs prévus pour la virtualisation (instructions de virtualisati
 L'avantage de ce type d'hyperviseur est que la majeure partie des ressources disponibles sont allouables aux différentes machines virtualisées. Cela a pour conséquence de pouvoir faire fonctionner de gros serveurs très gourmands en ressources sur le même hôte, à condition bien sûr que ce dernier possède à lui seul la puissance nécessaire pour faire tourner ces machines.  
 Comme exemples d'hyperviseur de type 1, nous pouvons citer Citrix XenServer ou Microsoft Hyper-V.
 
-Pour l'hyperviseur de type 2, il s'agit d'un logicielde virtualisation. Il n'est donc plus en lien direct avec le matériel. Il s'installe et s'exécute au sein du système hôte (déjà installé) et ne le contrôle donc pas. Il se situe au 3ème niveau (au dessus du matériel).  
-Via une interface souvent plus abordable, les machines sont moins performantes, dû au fait que le système hôte en consomme une partie pour fonctionner.
+Pour l'hyperviseur de type 2, il s'agit d'un logiciel de virtualisation. Il n'est donc plus en lien direct avec le matériel. Il s'installe et s'exécute au sein du système hôte (déjà installé) et ne le contrôle donc pas. Il se situe au 3ème niveau (au dessus du matériel).  
+Via une interface souvent plus abordable, les machines sont moins performantes, dû au fait que le système hôte en consomme déjà une partie pour fonctionner.
 
 ![http://www.it-connect.fr/les-types-dhyperviseurs](https://github.com/vfo1409/virtualisation/blob/master/hyperviseur-type2.png "Schéma de fonctionnement d'un hyperviseur de type 2. , http://www.it-connect.fr/wp-content-itc/uploads/2013/06/hyperviseur-type2.png")
 
