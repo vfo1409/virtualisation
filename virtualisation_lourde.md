@@ -16,6 +16,9 @@ Afin de correctement comprendre l'ensemble de ce texte, voici une brève défini
 * **Orchestration**: de manière général, l'orchestration est un mécanisme logique qui alloue la puissance de calcul à chaque processus en nécessitant, de manière équilibré et en fonction des besoins et de la priorité du processus.  Dans le cadre d'une virtualisation lourde, l'hyperviseur fait office d'orchestrateur pour les différentes machines virtuelles dont il a la charge. Il fait en sorte d'équilibrer l'attribution des ressources du système hôte à chacune d'entre elles.  
 Dans le cadre de la paravirtualisation (notamment réseau), où les machines virtuelles, le(s) hyperviseur(s) et l'espace de stockage se trouvent sur des machines physique différentes, l'orchestrateur est un programme qui va faire office de lien entre ces différents éléments afin d'éviter tout conflit et de justement distribuer les ressources matérielles à ces différents services.
 
+* **Anneaux de protection**: Les anneaux de protection sont des niveaux de privilège imposé par l'architecture d'un processeur. Généralement, l'anneau de plus grand privilège est le niveau 0 donnant accès aux matériel et en ayant le moins est le niveau le plus élevé où se trouve les programmes.
+
+
 ## Rappel des différents types de virtualisation
 
 La virtualisation, du point de vue machine, est le fait de faire fonctionner un ou plusieurs systèmes d'exploitation sur la même machine.
@@ -51,19 +54,37 @@ Il est à noter que le système d'exploitation de la machine virtuelle doit êtr
 En effet, si le système invité n'est pas prévu pour l'architecture du processeur de la machine hôte, il en résultera des crashs puisque le processeur recevra des instructions qui ne font pas partie de son propre jeu d'instructions et ne saura pas comment les traiter.
 La solution à ce problème s'appelle l'émulation qui elle va réinterpreté les instructions du système invité pour qu'elles soient compréhensibles par le processeur de la machine hôte.
 
-## Les hyperviseurs
 
-Comme mentionné précédemment, il existe plusieurs types de virtualisations.
-Ici nous en détaillerons deux :
+##Les hyperviseurs
 
-- L'hyperviseur type 1
-- L'hyperviseur type 2
+Comme mentionné précédemment, il existe deux types d'hyperviseurs:
 
-L'hyperviseur est un composant applicatif permettant de faire cohabiter plusieurs systèmes d'exploitation sur une même machine.
+- L'hyperviseur type 1 (natif)
+- L'hyperviseur type 2 (logiciel)
 
-Ce dernier ne doit pas être confondu avec l'application de virtualisation
+L'hyperviseur est un plate-forme applicative permettant de faire cohabiter plusieurs systèmes d'exploitation sur une même machine (virtuelle ou physique).
 
-Le principe d'hypervision est aussi présent dans le domaine des SI, là encore c'est différent. On entend "hyperviseur" dans le sens
+Le principe d'hypervision est aussi présent dans le domaine des SI, mais c'est un concept différent. 
+
+Ici, l'hyperviseur n'aura que pour but d'accueillir ces machines et d'allouer les ressources nécessaires au fonctionnement de celles-ci (dès le démarrage de la machine hôte pour le type 1 ou bien du logiciel de virtualisation pour le type 2).
+
+L'hyperviseur de type 1 est directement installé sur le matériel de la machine hôte, il contrôle donc les systèmes d'exploitation qui y sont installé. Il est considéré par ces dernier comme un noyau léger, optimisé pour virtualiser des machines.
+Sur les processeurs prévus pour la virtualisation (instructions de virtualisation matérielle), les anneaux de protection n'ont plus à être émulés, ce qui accélère le fonctionnement de l'hyperviseur.
+
+![http://www.it-connect.fr/les-types-dhyperviseurs](https://github.com/vfo1409/virtualisation/blob/master/hyperviseur-type1.png "Schéma de fonctionnement d'un hyperviseur de type 1. , http://www.it-connect.fr/wp-content-itc/uploads/2013/06/hyperviseur-type1.png")
+
+L'avantage de ce type d'hyperviseur est que la majeure partie des ressources disponibles sont allouables aux différentes machines virtualisées. Cela a pour conséquence de pouvoir faire fonctionner de gros serveurs très gourmands en ressources sur le même hôte, à condition bien sûr que ce dernier possède à lui seul la puissance nécessaire pour faire tourner ces machines.
+Comme exemples d'hyperviseur de type 1, nous pouvons citer Citrix XenServer ou Microsoft Hyper-V.
+
+Pour l'hyperviseur de type 2, il s'agit d'un logicielde virtualisation. Il n'est donc plus en lien direct avec le matériel. Il s'installe et s'exécute au sein du système hôte (déjà installé) et ne le contrôle donc pas. Il se situe au 3ème niveau (au dessus du matériel).
+Via une interface souvent plus abordable, les machines sont moins performantes, dû au fait que le système hôte en consomme une partie pour fonctionner.
+
+![http://www.it-connect.fr/les-types-dhyperviseurs](https://github.com/vfo1409/virtualisation/blob/master/hyperviseur-type2.png "Schéma de fonctionnement d'un hyperviseur de type 2. , http://www.it-connect.fr/wp-content-itc/uploads/2013/06/hyperviseur-type2.png")
+
+Son principal avantage réside dans le fait que les systèmes invités n'ont pas conscience d'être virtualisés, il donc n'est pas nécessaire qu'ils soient adaptés à la virtualisation, ce qui permet de faire tourner de vieux systèmes d'exploitation selon les besoins.
+Il est nécessaire de préciser qu'avec ce type d'hyperviseur, on peut installer et exécuter autant d'hyperviseurs que l'on souhaite (selon les ressources disponibles).
+Ici, nous citerons VMWare Workstation, VirtualPC ou le plus connu VirtualBox.
+
 
 ## Evolution technologique de la virtualisation
 
@@ -87,7 +108,8 @@ Mais la machine ayant véritablement tiré son épingle du jeu dans ce domaine �
 A partir de la seconde moitié des années 90, des passionnés et nostalgiques se lancent dans des projets d'émulation de machines de la décennie précédente, comme le C64 ou la NES.
 Enfin, à l'aube des années 2000, la société VMware lance et popularise un système de virtualisation lourde propriétaire et payant pour les architectures de type x86, qui était le standard des compatible-PC. Devant le succès de ce procédé, d'autres projets du même acabit voit le jour comme le logiciel libre VirtualBox maintenant détenu par Oracle, ou encore VirtualPC, spécialisé pour une utilisation des différentes versions de Windows et créé par Connectix, racheté en octobre 2003 par Microsoft.
 
-### Soucis technique
+
+### Souci technique
 
 Historiquement, l'architecture standard des compatible-PC est celle du x86, basée sur le jeu d'instructions du processeur 8086 d'Intel créé en 1978.
 Au niveau des systèmes d'exploitation 32 bits, cette architecture met à disposition des anneaux de protection des données en mémoire (au nombre de quatre). Le noyau 0 étant généralement utilisé par le noyau du système afin d'accéder au matériel et le 3 pour les programmes. L'objectif est de cloisonner les données des différents programmes afin que jamais ils n'accèdent directement à celles se trouvant dans d'autres anneaux. C'est justement le rôle du système d'exploitation de faire office de pont entre les anneaux lorsque cela est nécessaire.
@@ -109,6 +131,7 @@ Face à l'importance de plus en plus croissante de la virtualisation, notamment 
 * la permission aux machines virtuelles de ne plus êtres totalement dépendantes du noyau du système hôte puisque l'hyperviseur dispose d'un accès direct au processeur
 
 ![https://www.antoinebenkemoun.fr/wp-content/uploads/2009/08/Image-2.png](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Image-2.png "Schéma des anneaux de protection sur une architecture x64 pour une paravirtualisation matériellement assistée")
+
 
 ## Exemple par la pratique
 
@@ -181,11 +204,13 @@ Il vous suffira de réinstaller le système invitée sur la machine virtuelle.
 
 ![Internet Explorer sous Windows XP invité via une machine virtuelle VirtualBox sous Ubuntu 16.04 LTS](https://raw.githubusercontent.com/vfo1409/virtualisation/master/Capture_du_2016-11-05_18-30-16.png "Internet Explorer sous Windows XP invité via une machine virtuelle VirtualBox sous Ubuntu 16.04 LTS. Par Valentin Faria Oliveira - Travail personnel")
 
+
 ## Sources
 
 Généralités informatiques:  
 [https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation](https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation)  
-[https://en.wikipedia.org/wiki/Orchestration_(computing)](https://en.wikipedia.org/wiki/Orchestration_(computing))
+[https://en.wikipedia.org/wiki/Orchestration_(computing)](https://en.wikipedia.org/wiki/Orchestration_(computing))  
+[https://fr.wikipedia.org/wiki/Anneau_de_protection](https://fr.wikipedia.org/wiki/Anneau_de_protection)
 
 La virtualisation, ses différents types, et la virtualisation lourde:  
 [https://fr.wikipedia.org/wiki/Virtualisation](https://fr.wikipedia.org/wiki/Virtualisation)    
@@ -195,7 +220,9 @@ La virtualisation, ses différents types, et la virtualisation lourde:
 [https://www.antoinebenkemoun.fr/2009/07/les-differents-types-de-virtualisation-la-virtualisation-totale/](https://www.antoinebenkemoun.fr/2009/07/les-differents-types-de-virtualisation-la-virtualisation-totale/)
 
 Les hyperviseurs:  
-[https://www.antoinebenkemoun.fr/2009/10/de-la-differenciation-hyperviseur-type-1-type-2/](https://https://www.antoinebenkemoun.fr/2009/10/de-la-differenciation-hyperviseur-type-1-type-2/)
+[https://fr.wikipedia.org/wiki/Hyperviseur](https://fr.wikipedia.org/wiki/Hyperviseur)  
+[https://www.antoinebenkemoun.fr/2009/10/de-la-differenciation-hyperviseur-type-1-type-2/](https://https://www.antoinebenkemoun.fr/2009/10/de-la-differenciation-hyperviseur-type-1-type-2/)  
+[http://www.it-connect.fr/les-types-dhyperviseurs](http://www.it-connect.fr/les-types-dhyperviseurs)
 
 La virtualisation matériellement assitée:  
 [https://www.antoinebenkemoun.fr/2009/08/les-anneaux-de-protection/](https://www.antoinebenkemoun.fr/2009/08/les-anneaux-de-protection/)  
