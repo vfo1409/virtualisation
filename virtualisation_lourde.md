@@ -16,7 +16,7 @@ Afin de correctement comprendre l'ensemble de ce texte, voici une brève défini
 * **Orchestration**: de manière général, l'orchestration est un mécanisme logique qui alloue la puissance de calcul à chaque processus en nécessitant, de manière équilibré et en fonction des besoins et de la priorité du processus.  Dans le cadre d'une virtualisation lourde, l'hyperviseur fait office d'orchestrateur pour les différentes machines virtuelles dont il a la charge. Il fait en sorte d'équilibrer l'attribution des ressources du système hôte à chacune d'entre elles.  
 Dans le cadre de la paravirtualisation (notamment réseau), où les machines virtuelles, le(s) hyperviseur(s) et l'espace de stockage se trouvent sur des machines physique différentes, l'orchestrateur est un programme qui va faire office de lien entre ces différents éléments afin d'éviter tout conflit et de justement distribuer les ressources matérielles à ces différents services.
 
-* **Anneaux de protection**: Les anneaux de protection sont des niveaux de privilège imposé par l'architecture d'un processeur. Généralement, l'anneau de plus grand privilège est le niveau 0 donnant accès aux matériel et en ayant le moins est le niveau le plus élevé où se trouve les programmes.
+* **Anneaux de protection**: Les anneaux de protection sont des niveaux de privilège imposé par l'architecture d'un processeur. Généralement, l'anneau de plus grand privilège est le niveau 0 donnant accès au matériel et celui en ayant le moins est le niveau le plus élevé où se trouvent les programmes.
 
 
 ## Rappel des différents types de virtualisation
@@ -68,20 +68,20 @@ Le principe d'hypervision est aussi présent dans le domaine des SI, mais c'est 
 
 Ici, l'hyperviseur n'aura que pour but d'accueillir ces machines et d'allouer les ressources nécessaires au fonctionnement de celles-ci (dès le démarrage de la machine hôte pour le type 1 ou bien du logiciel de virtualisation pour le type 2).
 
-L'hyperviseur de type 1 est directement installé sur le matériel de la machine hôte, il contrôle donc les systèmes d'exploitation qui y sont installé. Il est considéré par ces dernier comme un noyau léger, optimisé pour virtualiser des machines.
+L'hyperviseur de type 1 est directement installé sur le matériel de la machine hôte, il contrôle donc les systèmes d'exploitation qui y sont installé. Il est considéré par ces dernier comme un noyau léger, optimisé pour virtualiser des machines.  
 Sur les processeurs prévus pour la virtualisation (instructions de virtualisation matérielle), les anneaux de protection n'ont plus à être émulés, ce qui accélère le fonctionnement de l'hyperviseur.
 
 ![http://www.it-connect.fr/les-types-dhyperviseurs](https://github.com/vfo1409/virtualisation/blob/master/hyperviseur-type1.png "Schéma de fonctionnement d'un hyperviseur de type 1. , http://www.it-connect.fr/wp-content-itc/uploads/2013/06/hyperviseur-type1.png")
 
-L'avantage de ce type d'hyperviseur est que la majeure partie des ressources disponibles sont allouables aux différentes machines virtualisées. Cela a pour conséquence de pouvoir faire fonctionner de gros serveurs très gourmands en ressources sur le même hôte, à condition bien sûr que ce dernier possède à lui seul la puissance nécessaire pour faire tourner ces machines.
+L'avantage de ce type d'hyperviseur est que la majeure partie des ressources disponibles sont allouables aux différentes machines virtualisées. Cela a pour conséquence de pouvoir faire fonctionner de gros serveurs très gourmands en ressources sur le même hôte, à condition bien sûr que ce dernier possède à lui seul la puissance nécessaire pour faire tourner ces machines.  
 Comme exemples d'hyperviseur de type 1, nous pouvons citer Citrix XenServer ou Microsoft Hyper-V.
 
-Pour l'hyperviseur de type 2, il s'agit d'un logicielde virtualisation. Il n'est donc plus en lien direct avec le matériel. Il s'installe et s'exécute au sein du système hôte (déjà installé) et ne le contrôle donc pas. Il se situe au 3ème niveau (au dessus du matériel).
+Pour l'hyperviseur de type 2, il s'agit d'un logicielde virtualisation. Il n'est donc plus en lien direct avec le matériel. Il s'installe et s'exécute au sein du système hôte (déjà installé) et ne le contrôle donc pas. Il se situe au 3ème niveau (au dessus du matériel).  
 Via une interface souvent plus abordable, les machines sont moins performantes, dû au fait que le système hôte en consomme une partie pour fonctionner.
 
 ![http://www.it-connect.fr/les-types-dhyperviseurs](https://github.com/vfo1409/virtualisation/blob/master/hyperviseur-type2.png "Schéma de fonctionnement d'un hyperviseur de type 2. , http://www.it-connect.fr/wp-content-itc/uploads/2013/06/hyperviseur-type2.png")
 
-Son principal avantage réside dans le fait que les systèmes invités n'ont pas conscience d'être virtualisés, il donc n'est pas nécessaire qu'ils soient adaptés à la virtualisation, ce qui permet de faire tourner de vieux systèmes d'exploitation selon les besoins.
+Son principal avantage réside dans le fait que les systèmes invités n'ont pas conscience d'être virtualisés, il donc n'est pas nécessaire qu'ils soient adaptés à la virtualisation, ce qui permet de faire tourner de vieux systèmes d'exploitation selon les besoins.  
 Il est nécessaire de préciser qu'avec ce type d'hyperviseur, on peut installer et exécuter autant d'hyperviseurs que l'on souhaite (selon les ressources disponibles).
 Ici, nous citerons VMWare Workstation, VirtualPC ou le plus connu VirtualBox.
 
