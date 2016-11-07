@@ -16,7 +16,8 @@ Afin de correctement comprendre l'ensemble de ce texte, voici une brève défini
 * **Orchestration**: de manière général, l'orchestration est un mécanisme logique qui alloue la puissance de calcul à chaque processus en nécessitant, de manière équilibré et en fonction des besoins et de la priorité du processus.  Dans le cadre d'une virtualisation lourde, l'hyperviseur fait office d'orchestrateur pour les différentes machines virtuelles dont il a la charge. Il fait en sorte d'équilibrer l'attribution des ressources du système hôte à chacune d'entre elles.  
 Dans le cadre de la paravirtualisation (notamment réseau), où les machines virtuelles, le(s) hyperviseur(s) et l'espace de stockage se trouvent sur des machines physique différentes, l'orchestrateur est un programme qui va faire office de lien entre ces différents éléments afin d'éviter tout conflit et de justement distribuer les ressources matérielles à ces différents services.
 
-* **Anneaux de protection**: Les anneaux de protection sont des niveaux de privilège imposé par l'architecture d'un processeur. Généralement, l'anneau de plus grand privilège est le niveau 0 donnant accès au matériel et celui en ayant le moins est le niveau le plus élevé où se trouvent les programmes.
+* **Anneaux de protection**: Les anneaux de protection sont des niveaux de privilège imposé par l'architecture d'un processeur. Généralement, l'anneau possédant le plus de privilèges se situe au niveau 0. C'est ce dernier qui se charge de l'accès au matériel.  
+A l'inverse, l'anneau étant au plus haut niveau englobe tous les programmes.
 
 
 ## Rappel des différents types de virtualisation
