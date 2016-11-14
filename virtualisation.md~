@@ -56,7 +56,7 @@ En effet, si le système invité n'est pas prévu pour l'architecture du process
 La solution à ce problème s'appelle l'émulation qui elle va réinterpreté les instructions du système invité pour qu'elles soient compréhensibles par le processeur de la machine hôte.
 
 
-## Les hyperviseurs
+##Les hyperviseurs
 
 Comme mentionné précédemment, il existe deux types d'hyperviseurs:
 
