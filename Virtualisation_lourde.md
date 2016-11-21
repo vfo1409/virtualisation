@@ -142,7 +142,7 @@ La procédure d'installation d'un programme étant propre au système d'exploita
 
 Nous précisons par ailleurs que cet exemple est effectué sous Ubuntu 16.04 LTS 64bits avec la version 5.0.24_Ubuntu r108355 de VirtualBox sur une machine possédant une architecture x64 avec un Intel Core I5 prenant en charge la virtualisation matériellement assitée ainsi que 8Go de mémoire vive.
 
-Tout d'abord, il faut créer le fichier de configuration de la machine virtuelle que nous nommerons winXP et que nous attacherons directement via à console de VirtualBox avec `--register`:
+Tout d'abord, il faut créer le fichier de configuration de la machine virtuelle que nous nommerons winXP et que nous attacherons directement à la console de VirtualBox avec `--register`:
 
     VBoxManage createvm --name winXP --register
 
